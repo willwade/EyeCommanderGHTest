@@ -85,7 +85,8 @@ module.exports = {
       name: "@electron-forge/maker-squirrel",
       config: {
         name: "EyeCommander",
-        
+        certificateFile: "win-cert.p12",
+        certificatePassword: process.env.CERTPASSWORD
       },
     },
     {
