@@ -85,7 +85,7 @@ module.exports = {
       name: "@electron-forge/maker-squirrel",
       config: {
         name: "EyeCommander",
-        ...certParams,
+        
       },
     },
     {
