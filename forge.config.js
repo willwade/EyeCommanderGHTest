@@ -87,7 +87,7 @@ module.exports = {
         name: "EyeCommander",
         certificateFile: "win-cert.p12",
         certificatePassword: process.env.CERTPASSWORD,
-        signWithParams: `/v`
+        signWithParams: " /a /tr http://rfc3161timestamp.globalsign.com/advanced /fd SHA256 /td SHA256"
       },
     },
     {
