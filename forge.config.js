@@ -87,7 +87,7 @@ module.exports = {
         name: "EyeCommander",
         certificateFile: "win-cert.p12",
         certificatePassword: process.env.CERTPASSWORD,
-        signWithParams: ` /a /tr http://timestamp.digicert.co /fd SHA256 /td SHA256 /f win-cert "D:\a\EyeCommanderGHTest\EyeCommanderGHTest\win-cert.p12" /p "${process.env.CERTPASSWORD}"`
+        signWithParams: ` /a /tr http://timestamp.digicert.co /fd SHA256 /td SHA256 /f "D:/\a/\EyeCommanderGHTest/\EyeCommanderGHTest/\win-cert.p12" /p "${process.env.CERTPASSWORD}"`
       },
     },
     {
