@@ -50,6 +50,12 @@ jobs:
         # Ignore when this fails, its a total hack but for some reason
         # electron forge only builds on start, run-as-node forces it to crash out
         run: yarn start --run-as-node || true
+        
+      - name: Dump cert
+        uses: kitek/decode-base64-into-file-action@1.0
+        with:
+          encoded-value: ${{ secrets.CERTP12B64 }}
+          destination-file: win-cert.p12
 
       - name: Forge publish
         if: ${{ steps.should-publish.outputs.result == 'publish' }}
@@ -61,11 +67,9 @@ jobs:
           CERTPASSWORD: ${{ secrets.CERTPASSWORD }}
         run: yarn make
         
-      - name: Dump cert
-        uses: kitek/decode-base64-into-file-action@1.0
-        with:
-          encoded-value: ${{ secrets.CERTP12B64 }}
-          destination-file: win-cert.p12
+      - name: Manually 
+        if: always()
+        run: D:\a\EyeCommanderGHTest\EyeCommanderGHTest\node_modules\electron-winstaller\vendor\signtool.exe sign /a /f "D:\a\EyeCommanderGHTest\EyeCommanderGHTest\win-cert.p12" /p "${{ secrets.CERTPASSWORD }}" C:\Users\runneradmin\AppData\Local\SquirrelTemp\tempa\lib\net45\eyecommander.exe
 
       - uses: actions/upload-artifact@v3
         with:
@@ -73,3 +77,4 @@ jobs:
           path: out
           # Github has size limits so this avoids hitting them
           retention-days: 1
+          
