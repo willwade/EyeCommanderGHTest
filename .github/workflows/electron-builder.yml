@@ -71,6 +71,12 @@ jobs:
         if: always()
         run: D:\a\EyeCommanderGHTest\EyeCommanderGHTest\node_modules\electron-winstaller\vendor\signtool.exe sign /a /f "D:\a\EyeCommanderGHTest\EyeCommanderGHTest\win-cert.p12" /p "${{ secrets.CERTPASSWORD }}" C:\Users\runneradmin\AppData\Local\SquirrelTemp\tempa\lib\net45\resources\app\node_modules\ffi-napi\prebuilds\darwin-x64\node.napi.uv1.node
   
+          
+      - name: Manually run something successfully done
+        if: always()
+        run: D:\a\EyeCommanderGHTest\EyeCommanderGHTest\node_modules\electron-winstaller\vendor\signtool.exe sign /a /f "D:\a\EyeCommanderGHTest\EyeCommanderGHTest\win-cert.p12" /p "${{ secrets.CERTPASSWORD }}" C:\Users\runneradmin\AppData\Local\SquirrelTemp\tempa\lib\net45\eyecommander.exe
+  
+  
       - uses: actions/upload-artifact@v3
         with:
           name: WindowsRelease
